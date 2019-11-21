@@ -11,4 +11,10 @@
     {% endfor %}
     </ul>
 {% endif %}
+<h4>Must See:</h4>
+    <ul>
+    {% for popular_post in popular_posts %}
+        <li><a href="/blog/{{ popular_post.title }}">{{ popular_post.title }}</a></li>
+    {% endfor %}
+    </ul>
 {% endblock %}

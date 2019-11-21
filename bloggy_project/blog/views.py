@@ -6,8 +6,9 @@ from blog.models import Post
 
 def index(request):
     latest_posts = Post.objects.all().order_by('-created_at')
+    popular_posts = Post.objects.order_by('-views')[:5]
     t = loader.get_template('blog/index.html')
-    c = {'latest_posts': latest_posts, }
+    c = {'latest_posts': latest_posts, 'popular_posts': popular_posts}
     for post in latest_posts:
         post.url = post.title.replace(' ', '_')
     return HttpResponse(t.render(c))
